@@ -15,5 +15,4 @@ Result
 Frontend runs on http://172.209.208.63:8080
 Backend API available at http://172.209.208.63:5000/api/notes
 
-Deploy
 
