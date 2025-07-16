@@ -33,6 +33,6 @@ jobs:
             docker pull polina0602/devops-course-frontend:latest
             docker pull polina0602/devops-course-backend:latest
 
-            docker-compose -f ~/docker-compose.yml down
-            docker-compose -f ~/docker-compose.yml up -d
+docker compose -f ~/docker-compose.yml down
+docker compose -f ~/docker-compose.yml up -d
 
