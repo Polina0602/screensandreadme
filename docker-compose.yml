@@ -1,19 +1,10 @@
-version: "3.8"
 services:
   backend:
-    build: ./backend
-    container_name: devops-course-notes-backend
+    image: polina0602/devops-course-backend:latest
     ports:
       - "5000:5000"
-    volumes:
-      - ./backend/notes.json:/app/notes.json
-    restart: always
 
   frontend:
-    build: ./frontend
-    container_name: devops-course-notes-frontend
+    image: polina0602/devops-course-frontend:latest
     ports:
       - "8080:80"
-    depends_on:
-      - backend
-    restart: always
