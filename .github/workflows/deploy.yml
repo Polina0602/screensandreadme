@@ -1,3 +1,28 @@
+name: Deploy to Azure VM
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Copy docker-compose.yml to VM
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.VM_IP_ADDRESS }}
+          username: ${{ secrets.VM_SSH_USERNAME }}
+          key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
+          source: "docker-compose.yml"
+          target: "~"
+
       - name: SSH into VM and deploy containers
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -10,5 +35,6 @@
 
             docker compose -f ~/docker-compose.yml down
             docker compose -f ~/docker-compose.yml up -d
+
 
 
